@@ -8,3 +8,6 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Manually ignored files
+game_stats.jsonl
