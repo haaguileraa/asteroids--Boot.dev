@@ -10,4 +10,4 @@ wheels/
 .venv
 
 # Manually ignored files
-game_stats.jsonl
+game_state.jsonl
