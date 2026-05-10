@@ -16,10 +16,14 @@ def main():
         log_state()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                return            
+                return           
+        
+        player_obj.update(dt)
+
         screen.fill("black")
         # add game elements here (after drawing the background) 
         player_obj.draw(screen)
+        
         # last step:
         pygame.display.flip() # refresh screen
         dt = clock.tick(FPS) / 1000
