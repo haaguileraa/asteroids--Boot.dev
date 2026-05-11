@@ -1,5 +1,7 @@
 import pygame
 
+RELATIVE_TOLERANCE = 1e-09
+
 # Base class for game objects
 class CircleShape(pygame.sprite.Sprite):
     def __init__(self, x, y, radius):
@@ -12,6 +14,11 @@ class CircleShape(pygame.sprite.Sprite):
         self.position = pygame.Vector2(x, y)
         self.velocity = pygame.Vector2(0, 0)
         self.radius = radius
+    
+    def collides_with(self, other):
+        distance = self.position.distance_to(other.position)
+        r1r2 = self.radius + other.radius
+        return distance - r1r2 <= RELATIVE_TOLERANCE
 
     def draw(self, screen):
         # must override
