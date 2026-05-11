@@ -1,6 +1,5 @@
 import pygame
-
-RELATIVE_TOLERANCE = 1e-09
+from constants import RELATIVE_TOLERANCE
 
 # Base class for game objects
 class CircleShape(pygame.sprite.Sprite):
