@@ -1,10 +1,14 @@
 import sys
 import pygame
-from logger import log_state, log_event
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
-from player import Player
+
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from player import Player
+from logger import log_state, log_event
+from shot import Shot
+
+
 FPS = 60
 
 def main():
@@ -14,9 +18,11 @@ def main():
     print(f"Screen width: {SCREEN_WIDTH}\nScreen height: {SCREEN_HEIGHT}")
     clock = pygame.time.Clock()
     dt =  0
+
     asteroids = pygame.sprite.Group()
-    updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
+    shots = pygame.sprite.Group()
+    updatable = pygame.sprite.Group()
 
     Asteroid.containers = (asteroids, updatable, drawable)
     AsteroidField.containers = updatable
@@ -25,6 +31,8 @@ def main():
     Player.containers = (updatable, drawable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
     
+    Shot.containers = (shots, updatable, drawable)
+
     while(True):
         log_state()
         for event in pygame.event.get():
